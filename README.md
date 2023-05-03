@@ -36,20 +36,34 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 
 ![](images/part3/part3-test-function.png)
 
-![](images/img/unmillon.png)
+### Evidencias
 
+![](images/img/punto1.png)
+
+![](images/img/unmillon.png)
 
 5. Modifique la coleción de POSTMAN con NEWMAN de tal forma que pueda enviar 10 peticiones concurrentes. Verifique los resultados y presente un informe.
 
+![](images/img/millonconcurrente.png)
+
+![](images/img/metricas.png)
+
 6. Cree una nueva Function que resuleva el problema de Fibonacci pero esta vez utilice un enfoque recursivo con memoization. Pruebe la función varias veces, después no haga nada por al menos 5 minutos. Pruebe la función de nuevo con los valores anteriores. ¿Cuál es el comportamiento?.
+
+  Aplicando memoization a la función de Fibonacci, se puede ver que la función solo sirve para número pequeños pero con número muy altos como 1000000 no sirve en el entorno de Node.js.
 
 **Preguntas**
 
 * ¿Qué es un Azure Function?
+
   Azure Functions es un servicio en la nube disponible a petición que proporciona toda la infraestructura y los recursos, que se actualizan continuamente, necesarios para ejecutar las aplicaciones. Céntrese en el código que más le importa, en el lenguaje más productivo, y Functions se encargará del resto. Functions proporciona proceso sin servidor para Azure. Functions también se puede usar para crear API web, responder a los cambios en las bases de datos, procesar secuencias de IoT, administrar colas de mensajes, etc.
+
 * ¿Qué es serverless?
+
   Serverless significa sin servidor, es una solución que permite crear y ejecutar aplicaciones con rapidez y menor costo total de propiedad, ya que no es necesario aprovisionar y administrar infraestructura. Evidentemente, por detrás hay servidores para ejecutar las aplicaciones, pero el proveedor de nube se encarga de la administración, por lo tanto, de nuestro lado dejamos de preocuparnos por administrar servidores, sistemas operativos, software y demás recursos, y únicamente nos centramos en el código de la aplicación.
+
 * ¿Qué es el runtime y que implica seleccionarlo al momento de crear el Function App?
+
   El runtime stack es el lenguaje que se va a utilizar en la function app. El lenguaje de la función se mantiene en la configuración FUNCTIONS_WORKER_RUNTIME y no se debería cambiar una vez ya creada la función.
   
   Azure soporta los siguientes lenguajes en function app:
@@ -100,8 +114,11 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
   - Se requieren escalado y costos predictivos.
   
 * ¿Por qué la memoization falla o no funciona de forma correcta?
+
   Cuando la función se prueba con números muy grandes como 100000, la pila de llamadas recursivas crece demasiado para el entorno de ejecución de Node.js y manda una excepción (también sale error 500).
+
 * ¿Cómo funciona el sistema de facturación de las Function App?
+
   El modelo de facturación es conocido como "pago por uso".
   
   Cuando se ejecuta una función, Azure monitoriza el tiempo de ejecución, el consumo de memoria y otros recursos. En función de esto, se realiza un cálculo de los recursos consumidos y se factura en consecuencia.
